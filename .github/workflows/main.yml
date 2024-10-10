@@ -1,0 +1,38 @@
+name: Next.js CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Triggers the workflow when pushing to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'  # Use Node.js version 16.x
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm run test
+
+    - name: Build Next.js project
+      run: npm run build
+
+    - name: Deploy to Lightsail
+      env:
+        HOST: ${{ secrets.LIGHTSAIL_HOST }}  # Configure this in the repo settings
+        USER: ${{ secrets.LIGHTSAIL_USER }}  # Configure this in the repo settings
+        KEY: ${{ secrets.LIGHTSAIL_KEY }}    # Configure this in the repo settings
+      run: |
+        echo "$KEY" > lightsail.pem
+        chmod 600 lightsail.pem
+        scp -i lightsail.pem -r . $USER@$HOST:/var/www/html
