@@ -11,9 +11,15 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        sage: {
+          300: '#c5e1a5',
+          400: '#aed581',
+          800: '#558b2f',
+        },
       },
     },
   },
   plugins: [],
 };
+
 export default config;
