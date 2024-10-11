@@ -1,7 +1,7 @@
 'use client';
 
+import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -17,7 +17,12 @@ export default function Navbar() {
       </ul>
 
       {session?.user ? (
-        <p style={{ marginTop: '1rem' }}>Welcome, {session.user.name || session.user.email}</p>
+        <div style={{ marginTop: '1rem' }}>
+          <p>Welcome, {session.user.name || session.user.email}</p>
+          <button onClick={() => signOut()} style={{ background: '#f00', color: '#fff', padding: '0.5rem 1rem', border: 'none', cursor: 'pointer' }}>
+            Sign Out
+          </button>
+        </div>
       ) : (
         <p style={{ marginTop: '1rem' }}>You are not signed in</p>
       )}
