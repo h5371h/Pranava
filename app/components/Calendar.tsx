@@ -12,12 +12,11 @@ const Calendar = () => {
   ]);
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Session Calendar</h1>
+    <div className="bg-gray-100 p-6 rounded-lg shadow-md">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin]}
         initialView="dayGridMonth"
-        events={events} // Load events here
+        events={events}
         headerToolbar={{
           left: 'prev,next today',
           center: 'title',

@@ -9,10 +9,9 @@ export default function Profile() {
   const [email, setEmail] = useState(session?.user?.email || '');
   const [isEditing, setIsEditing] = useState(false);
 
-  // Mock function for saving changes (to be replaced with actual API calls)
   const saveChanges = () => {
     alert(`Name: ${name}\nEmail: ${email}`);
-    setIsEditing(false); // Stop editing after saving
+    setIsEditing(false);
   };
 
   useEffect(() => {
@@ -22,36 +21,43 @@ export default function Profile() {
     }
   }, [session]);
 
-  if (!session) return <p>Loading...</p>;
+  if (!session) return <p className="text-center">Loading...</p>;
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Your Profile</h1>
-      
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Name: </label>
+    <div className="container p-8 bg-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-semibold mb-6">Your Profile</h1>
+
+      <div className="mb-4">
+        <label className="block font-medium text-gray-700">Name:</label>
         {isEditing ? (
           <input 
-            type="text" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full border p-2 rounded-md"
           />
         ) : (
           <p>{name}</p>
         )}
       </div>
 
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Email: </label>
-        <p>{email}</p> {/* Email should be read-only */}
+      <div className="mb-4">
+        <label className="block font-medium text-gray-700">Email:</label>
+        <p>{email}</p> {/* Email is read-only */}
       </div>
 
       {isEditing ? (
-        <button onClick={saveChanges} style={{ padding: '0.5rem', background: '#4CAF50', color: '#fff', border: 'none', cursor: 'pointer' }}>
+        <button 
+          onClick={saveChanges}
+          className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600"
+        >
           Save Changes
         </button>
       ) : (
-        <button onClick={() => setIsEditing(true)} style={{ padding: '0.5rem', background: '#007bff', color: '#fff', border: 'none', cursor: 'pointer' }}>
+        <button 
+          onClick={() => setIsEditing(true)}
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+        >
           Edit Profile
         </button>
       )}
