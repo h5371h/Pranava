@@ -2,9 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
   const { data: session, status } = useSession();
@@ -16,21 +14,12 @@ const Dashboard = () => {
     }
   }, [status]);
 
-  const [events, setEvents] = useState([
-    { title: 'Yoga Class', start: '2024-10-12' },
-    { title: 'Performance Coaching', start: '2024-10-13' },
-  ]);
-
   if (status === 'loading') return <p>Loading...</p>;
 
   return (
     <div>
-      <h1>Welcome, {session?.user?.email}</h1>
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView="dayGridMonth"
-        events={events}
-      />
+      <h1>Welcome to the Dashboard</h1>
+      <p>You're logged in as {session?.user?.email}</p>
     </div>
   );
 };
