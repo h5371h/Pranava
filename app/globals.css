@@ -2,23 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 body {
-  @apply bg-gray-100 text-gray-900 antialiased;
+  font-family: 'Inter', sans-serif;
 }
 
 a {
-  @apply text-blue-500 hover:text-blue-600;
+  @apply text-blue-500 hover:underline;
 }
 
 button {
-  @apply transition-colors duration-300 ease-in-out;
+  @apply transition-colors duration-200 ease-in-out;
 }
 
-input {
-  @apply border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none;
+input, select {
+  @apply border rounded-md p-2;
 }
 
-.container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+main {
+  @apply w-full max-w-7xl mx-auto; /* Centers and limits content width */
+}
+
+/* Calendar styling adjustments */
+.fc {
+  font-size: 0.9rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1.5rem;
+}
+
+.fc th, .fc td {
+  padding: 10px;
+}
+
+/* Responsive calendar tweaks */
+@media (max-width: 768px) {
+  .fc {
+    font-size: 0.8rem;
+  }
+  .fc-toolbar-title {
+    font-size: 1.25rem;
+  }
+  .fc th, .fc td {
+    padding: 6px;
+  }
+}
+
+nav {
+  @apply bg-white shadow fixed top-0 left-0 w-full z-50;
+}
+
+@media (max-width: 768px) {
+  .hidden.md\:flex {
+    display: none !important;
+  }
+}
+
+.fc .fc-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.fc .fc-toolbar-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.fc .fc-button {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+.fc .fc-daygrid-day {
+  background-color: #f9fafb;
+}
+
+.fc .fc-event {
+  background-color: #4caf50;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+@media (min-width: 1024px) {
+  .fc {
+    font-size: 1rem;
+  }
+}
+
+.calendar-wrapper {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+.resize-handle:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-container {
+  overflow-x: auto;
 }

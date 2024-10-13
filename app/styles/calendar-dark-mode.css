@@ -1,0 +1,117 @@
+.dark-mode .fc-theme-standard .fc-scrollgrid,
+.dark-mode .fc-theme-standard .fc-scrollgrid-section > td,
+.dark-mode .fc-theme-standard td,
+.dark-mode .fc-theme-standard th {
+  border-color: #4a5568;
+}
+
+.dark-mode .fc .fc-daygrid-day-number,
+.dark-mode .fc .fc-col-header-cell-cushion {
+  color: white !important;
+}
+
+.dark-mode .fc .fc-daygrid-day.fc-day-today {
+  background-color: rgba(66, 153, 225, 0.2);
+}
+
+.dark-mode .fc-theme-standard .fc-popover {
+  background-color: #2d3748;
+  border-color: #4a5568;
+}
+
+.dark-mode .fc-theme-standard .fc-popover-header {
+  background-color: #4a5568;
+  color: white;
+}
+
+.dark-mode .fc-theme-standard .fc-popover-body {
+  color: white;
+}
+
+.dark-mode .fc-daygrid-event {
+  background-color: #4a5568;
+  border-color: #718096;
+  color: white;
+}
+
+.dark-mode .fc-daygrid-dot-event {
+  background-color: #4a5568;
+  color: white;
+}
+
+.dark-mode .fc-daygrid-more-link {
+  color: #a0aec0;
+}
+
+.dark-mode .fc-timegrid-event {
+  background-color: #4a5568;
+  border-color: #718096;
+}
+
+.dark-mode .fc-timegrid-slot {
+  color: #a0aec0;
+}
+
+.dark-mode .fc-timegrid-slot-label {
+  color: #a0aec0;
+}
+
+/* Add these new styles for the calendar grid */
+.dark-mode .fc-theme-standard .fc-view-harness {
+  background-color: #1a202c;
+}
+
+.dark-mode .fc-theme-standard .fc-scrollgrid-section-header th {
+  background-color: #2d3748;
+  color: white;
+}
+
+.dark-mode .fc-theme-standard .fc-daygrid-day {
+  background-color: #2d3748;
+}
+
+.dark-mode .fc-theme-standard .fc-day-other {
+  background-color: #1a202c;
+}
+
+.dark-mode .fc-theme-standard .fc-day-today {
+  background-color: #3182ce !important;
+}
+
+.dark-mode .fc-theme-standard .fc-day-today .fc-daygrid-day-number {
+  color: white !important;
+  font-weight: bold;
+}
+
+.dark-mode .fc-theme-standard .fc-col-header-cell {
+  background-color: #2d3748;
+}
+
+.dark-mode .fc-theme-standard .fc-scrollgrid-section > td {
+  background-color: #2d3748;
+}
+
+.dark-mode .fc-theme-standard .fc-timegrid-axis {
+  background-color: #2d3748;
+}
+
+.dark-mode .fc-theme-standard .fc-timegrid-slot-minor {
+  border-color: #4a5568;
+}
+
+.dark-mode .fc-theme-standard .fc-timegrid-slot-label-cushion {
+  color: #a0aec0;
+}
+
+.dark-mode .fc-theme-standard .fc-list-day-cushion {
+  background-color: #2d3748;
+}
+
+.dark-mode .fc-theme-standard .fc-list-event:hover td {
+  background-color: #4a5568;
+}
+
+.dark-mode .fc-theme-standard .fc-list-day-side-text,
+.dark-mode .fc-theme-standard .fc-list-day-text {
+  color: white;
+}

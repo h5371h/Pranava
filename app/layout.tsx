@@ -1,43 +1,36 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import Navbar from './navbar';
-import SessionProviderWrapper from './SessionProviderWrapper'; // Import the client-side provider
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+import Footer from './components/Footer'
+import Navbar from './navbar'
+import SessionProviderWrapper from './SessionProviderWrapper'
+import { ThemeProvider } from './contexts/ThemeContext'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Pranava - Online Yoga Platform",
-  description: "Discover balance through online yoga with Pranava",
-};
+  title: 'Pranava Yoga & Wellness',
+  description: 'Transform your life with holistic yoga and wellness practices',
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div className="min-h-screen flex flex-col">
-          {/* Wrap the app in SessionProviderWrapper */}
+    <ThemeProvider>
+      <html lang="en">
+        <body className={`${inter.className} bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark transition-colors duration-300`}>
           <SessionProviderWrapper>
-            <Navbar />
-            <main className="flex-grow">{children}</main>
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow pt-20 pb-8 px-4">{children}</main>
+              <Footer />
+            </div>
           </SessionProviderWrapper>
-        </div>
-      </body>
-    </html>
-  );
+        </body>
+      </html>
+    </ThemeProvider>
+  )
 }

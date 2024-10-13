@@ -1,66 +1,27 @@
 'use client';
 
+import ProfileForm from '../components/ProfileForm';
 import { useSession } from 'next-auth/react';
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-export default function Profile() {
-  const { data: session } = useSession();
-  const [name, setName] = useState(session?.user?.name || '');
-  const [email, setEmail] = useState(session?.user?.email || '');
-  const [isEditing, setIsEditing] = useState(false);
+const ProfilePage = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  const saveChanges = () => {
-    alert(`Name: ${name}\nEmail: ${email}`);
-    setIsEditing(false);
-  };
-
+  // Redirect to login if not authenticated
   useEffect(() => {
-    if (session?.user) {
-      setName(session.user.name || '');
-      setEmail(session.user.email || '');
+    if (status === 'unauthenticated') {
+      router.push('/auth');
     }
-  }, [session]);
-
-  if (!session) return <p className="text-center">Loading...</p>;
+  }, [status, router]);
 
   return (
-    <div className="container p-8 bg-white rounded-lg shadow-md">
+    <div className="max-w-2xl mx-auto mt-8 p-6 bg-white shadow-md rounded-lg">
       <h1 className="text-2xl font-semibold mb-6">Your Profile</h1>
-
-      <div className="mb-4">
-        <label className="block font-medium text-gray-700">Name:</label>
-        {isEditing ? (
-          <input 
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full border p-2 rounded-md"
-          />
-        ) : (
-          <p>{name}</p>
-        )}
-      </div>
-
-      <div className="mb-4">
-        <label className="block font-medium text-gray-700">Email:</label>
-        <p>{email}</p> {/* Email is read-only */}
-      </div>
-
-      {isEditing ? (
-        <button 
-          onClick={saveChanges}
-          className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600"
-        >
-          Save Changes
-        </button>
-      ) : (
-        <button 
-          onClick={() => setIsEditing(true)}
-          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
-        >
-          Edit Profile
-        </button>
-      )}
+      <ProfileForm session={session} /> {/* ProfileForm Component */}
     </div>
   );
-}
+};
+
+export default ProfilePage;
